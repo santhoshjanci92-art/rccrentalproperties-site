@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RCC Rental Properties — Houses for Rent in Ocala, FL</title>
+  <title>RCC Rental Properties — Houses for Rent in Ocala Area</title>
   <meta name="description" content="Browse clean, comfortable rental homes in and around Ocala, Florida. View current availability, prices, and contact RCC Rental Properties." />
   <meta name="theme-color" content="#0f172a"/>
   <style>
@@ -14,49 +14,49 @@
     a:hover { text-decoration:underline; }
     header.top { position:sticky; top:0; z-index:20; background:var(--bg); border-bottom:1px solid var(--border); }
     .container { width:min(1100px,92vw); margin:0 auto; }
-    .row { display:flex; gap:16px; flex-wrap:wrap; }
+    .row { display:flex; gap:24px; flex-wrap:wrap; }            /* more gap */
     .topbar { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
     .brand { display:flex; align-items:center; gap:10px; }
     .brand-logo { width:36px; height:36px; border-radius:10px; background: radial-gradient(circle at 30% 30%, #60a5fa, #1e293b); box-shadow: 0 4px 14px rgba(2,6,23,.22) inset, 0 3px 8px rgba(2,6,23,.18); }
     .brand h1 { font-size:18px; margin:0; letter-spacing:.3px; }
     nav ul { display:flex; gap:16px; padding:0; margin:0; list-style:none; }
     nav a { color:var(--muted); font-weight:600; }
-    .hero { background:linear-gradient(180deg,#0f172a,#111827); color:#fff; padding:48px 0 28px; border-bottom:1px solid #0b1220; }
-    .hero h2 { font-size: clamp(24px, 3vw, 36px); margin:0 0 10px; }
+    .hero { background:linear-gradient(180deg,#0f172a,#111827); color:#fff; padding:52px 0 32px; border-bottom:1px solid #0b1220; }
+    .hero h2 { font-size: clamp(26px, 3.2vw, 40px); margin:0 0 12px; }
     .hero p { margin:0; color:#cbd5e1; }
-    .panel { background:var(--bg); border:1px solid var(--border); border-radius:14px; padding:18px; box-shadow:0 3px 12px rgba(2,6,23,.06);}
+    .panel { background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow:0 3px 12px rgba(2,6,23,.06);}
     .filters { margin-top:-18px; position:sticky; top:60px; z-index:10; }
     .filters .panel { display:grid; grid-template-columns: 1.4fr repeat(4,1fr) auto; gap:12px; align-items:end; }
     label { font-size:12px; color:var(--muted); display:block; margin-bottom:6px; }
-    input[type="text"], input[type="number"], select { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:var(--bg); color:var(--text); outline:none; }
+    input[type="text"], input[type="number"], select { width:100%; padding:11px 13px; border:1px solid var(--border); border-radius:12px; background:var(--bg); color:var(--text); outline:none; }
     input:focus, select:focus { border-color: var(--brand-2); box-shadow: 0 0 0 4px var(--ring);}
-    button { border:0; background:var(--brand-2); color:white; padding:12px 16px; border-radius:10px; font-weight:700; cursor:pointer; }
+    button { border:0; background:var(--brand-2); color:white; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer; }
     button.ghost { background:transparent; color:var(--brand-2); border:1px solid var(--brand-2);}
-    main { padding:24px 0 64px; }
-    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px; }
-    @media (max-width:900px) { .filters .panel { grid-template-columns:1fr 1fr 1fr; } .grid { grid-template-columns:1fr; } }
-    .listing { display:grid; grid-template-columns:260px 1fr; gap:16px; padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--card);}
-    @media (max-width:700px) { .listing { grid-template-columns:1fr; } }
-    .imgwrap { position:relative; overflow:hidden; border-radius:10px; background:#111827; min-height:160px; }
+    main { padding:28px 0 72px; }
+    /* GRID — one card per row for better spacing on desktop too */
+    .grid { display:grid; grid-template-columns: 1fr; gap:28px; }
+    /* LISTING CARD — airy layout */
+    .listing { display:flex; flex-direction:column; gap:14px; padding:18px; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--card); box-shadow:0 4px 14px rgba(2,6,23,.08);}
+    .imgwrap { position:relative; overflow:hidden; border-radius:12px; background:#111827; min-height:260px; }
     .imgwrap img { width:100%; height:100%; object-fit:cover; display:block; }
-    .badge { position:absolute; left:10px; top:10px; background:rgba(15,23,42,.9); color:white; padding:4px 10px; border-radius:1000px; font-size:12px; letter-spacing:.3px; }
-    .price { font-weight:800; font-size:20px; }
-    .specs { color:var(--muted); font-weight:600; display:flex; flex-wrap:wrap; gap:10px; }
-    .title { margin:4px 0 6px; font-size:18px; }
+    .badge { position:absolute; left:14px; top:14px; background:rgba(15,23,42,.92); color:white; padding:5px 12px; border-radius:999px; font-size:13px; letter-spacing:.3px; }
+    .specs { color:var(--muted); font-weight:600; display:flex; flex-wrap:wrap; gap:12px; }
+    .title { margin:8px 0 10px; font-size:20px; }
+    .price { font-weight:800; font-size:20px; margin-bottom:8px; }
     .desc { color:#334155; margin:8px 0 12px; }
-    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; }
     .sidebar { position:sticky; top:152px; align-self:start; }
     .kicker { color:var(--ok); font-weight:700; font-size:12px; letter-spacing:.4px; }
     .section { margin-top:36px; }
     .testi { border-left:3px solid var(--brand-2); padding-left:12px; background:#f1f5f9; border-radius:8px; padding:12px; }
-    footer { padding:28px 0 48px; color:var(--muted); border-top:1px solid var(--border); }
+    footer { padding:32px 0 52px; color:var(--muted); border-top:1px solid var(--border); }
     .footercols { display:grid; grid-template-columns: 2fr 1fr 1fr; gap:18px; }
     @media (max-width:900px) { .footercols { grid-template-columns:1fr; } }
     .small { font-size:12px; color:var(--muted); }
-    .pill { display:inline-block; font-size:12px; background:#e2e8f0; color:#0f172a; padding:4px 8px; border-radius:999px; margin-right:6px; margin-bottom:6px; }
+    .pill { display:inline-block; font-size:12px; background:#e2e8f0; color:#0f172a; padding:6px 10px; border-radius:999px; margin-right:6px; margin-bottom:6px; }
     .hidden { display:none !important; }
-    .gallery { display:flex; gap:8px; margin-top:8px; overflow:auto; }
-    .gallery img { height:64px; width:auto; border-radius:6px; border:1px solid var(--border); }
+    .gallery { display:flex; gap:10px; margin-top:8px; overflow:auto; padding-bottom:4px; }
+    .gallery img { height:74px; width:auto; border-radius:8px; border:1px solid var(--border); }
   </style>
 </head>
 <body>
@@ -106,7 +106,7 @@
           <label for="maxRent">Max rent ($/mo)</label>
           <input id="maxRent" type="number" inputmode="numeric" placeholder="3000" />
         </div>
-        <div style="display:flex; gap:8px;">
+        <div style="display:flex; gap:10px;">
           <button id="applyFilters" aria-label="Apply filters">Filter</button>
           <button class="ghost" id="clearFilters" aria-label="Clear filters">Reset</button>
         </div>
@@ -146,10 +146,10 @@
       </div>
     </div>
 
-    <aside class="sidebar" id="contact" style="flex:.9; min-width:280px;">
+    <aside class="sidebar" id="contact" style="flex:.9; min-width:320px;">
       <div class="panel">
         <h3>Contact</h3>
-        <p><strong>Phone:</strong> <a href="tel:+1-386-212-255" id="phone">386-212-255</a><br/>
+        <p><strong>Phone:</strong> <a href="tel:+13862129255" id="phone">(386) 212-9255</a><br/>
            <strong>Email:</strong> <a href="mailto:santhoshjanci92@gmail.com" id="email">santhoshjanci92@gmail.com</a></p>
         <p><strong>Office:</strong><br/>
            <span id="address">Ocala, FL</span><br/>
@@ -162,7 +162,6 @@
         <h4>Helpful Links</h4>
         <ul>
           <li><a href="https://www.facebook.com/share/177gVb3y2k/">Facebook</a></li>
-          
         </ul>
       </div>
     </aside>
@@ -189,7 +188,6 @@
         <strong>Follow</strong>
         <ul>
           <li><a href="https://www.facebook.com/share/177gVb3y2k/">Facebook</a></li>
-          
         </ul>
       </div>
     </div>
@@ -220,9 +218,9 @@
       "Primary suite w/ walk-in closet",
       "Open concept living/dining",
       "Stainless appliances & granite",
-      "In‑unit laundry hookups",
-      "2‑car garage",
-      "Energy‑efficient fixtures"
+      "In-unit laundry hookups",
+      "2-car garage",
+      "Energy-efficient fixtures"
     ],
     "image": "./assets/citrus-springs-1.png",
     "gallery": [
@@ -239,25 +237,30 @@
   {
     "id": "belleview-3918-se-99th",
     "datePosted": "2025-09-04",
-    "title": "Belleview Home — Details Coming Soon",
+    "title": "Belleview — 4 Bed 2 Bath (2019)",
     "address": "3918 SE 99th St",
     "city": "Belleview",
     "state": "FL",
     "zip": "34420",
-    "neighborhood": "—",
-    "beds": null,
-    "baths": null,
-    "sqft": null,
+    "neighborhood": "Belleview",
+    "beds": 4,
+    "baths": 2,
+    "sqft": 2940,
     "rent": null,
     "deposit": null,
     "available": "TBD",
-    "description": "Property preview — add beds/baths, rent, availability, and photos when ready.",
+    "description": "Built 2019 on a 0.25 acre lot. Tile & carpet floors, central cooling, attached garage, HOA $25/mo. Not currently listed for rent — contact for availability.",
     "features": [
-      "Quiet street",
-      "Convenient location"
+      "2019 build • Concrete block",
+      "Attached garage",
+      "Central cooling • Heat pump",
+      "Tile & carpet flooring",
+      "Cement/concrete exterior"
     ],
-    "image": "https://images.unsplash.com/photo-1560185009-d201f0b1b774?q=80&w=1200&auto=format&fit=crop",
-    "gallery": [],
+    "image": "./assets/belleview-front.png",
+    "gallery": [
+      "./assets/belleview-front.png"
+    ],
     "applyUrl": "#"
   }
 ];
@@ -287,7 +290,7 @@
         <div>
           <div class="specs">${specs}</div>
           <h4 class="title">${escape(l.title)}</h4>
-          <div class="price">${fmtMoney(l.rent)}</div>
+          <div class="price">${fmtMoney(l.rent) || 'Call for pricing'}</div>
           <div class="desc">${escape(l.description||'')}</div>
           <div class="small" style="margin-bottom:8px;">${escape(addr)}</div>
           <div>${pills}</div>
@@ -335,7 +338,7 @@
         const passBeds = !bedN || (l.beds || 0) >= bedN;
         const passBaths = !bathN || (l.baths || 0) >= bathN;
         const rent = l.rent || 0;
-        const passRent = rent >= minR && rent <= maxR;
+        const passRent = rent >= minR && rent <= maxR || l.rent == null;
         return passText && passBeds && passBaths && passRent;
       });
       render(filtered);
@@ -346,18 +349,6 @@
 
     render(LISTINGS);
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // JSON-LD
-    const orgJsonLd = {
-      "@context":"https://schema.org",
-      "@type":"Organization",
-      "name":"RCC Rental Properties",
-      "url":"https://www.rccrentalproperties.com/",
-      "telephone":"386-212-255",
-      "address": {"@type":"PostalAddress","addressLocality":"Ocala","addressRegion":"FL","addressCountry":"US"},
-      "sameAs":["https://www.facebook.com/share/177gVb3y2k/"]
-    };
-    const script = document.createElement('script'); script.type="application/ld+json"; script.textContent = JSON.stringify(orgJsonLd); document.head.appendChild(script);
   </script>
 </body>
 </html>
