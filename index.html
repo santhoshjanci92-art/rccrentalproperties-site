@@ -14,14 +14,14 @@
     a:hover { text-decoration:underline; }
     header.top { position:sticky; top:0; z-index:20; background:var(--bg); border-bottom:1px solid var(--border); }
     .container { width:min(1100px,92vw); margin:0 auto; }
-    .row { display:flex; gap:24px; flex-wrap:wrap; }            /* more gap */
+    .row { display:flex; gap:28px; flex-wrap:wrap; align-items:flex-start; }
     .topbar { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
     .brand { display:flex; align-items:center; gap:10px; }
     .brand-logo { width:36px; height:36px; border-radius:10px; background: radial-gradient(circle at 30% 30%, #60a5fa, #1e293b); box-shadow: 0 4px 14px rgba(2,6,23,.22) inset, 0 3px 8px rgba(2,6,23,.18); }
     .brand h1 { font-size:18px; margin:0; letter-spacing:.3px; }
     nav ul { display:flex; gap:16px; padding:0; margin:0; list-style:none; }
     nav a { color:var(--muted); font-weight:600; }
-    .hero { background:linear-gradient(180deg,#0f172a,#111827); color:#fff; padding:52px 0 32px; border-bottom:1px solid #0b1220; }
+    .hero { background:linear-gradient(180deg,#0f172a,#111827); color:#fff; padding:56px 0 34px; border-bottom:1px solid #0b1220; }
     .hero h2 { font-size: clamp(26px, 3.2vw, 40px); margin:0 0 12px; }
     .hero p { margin:0; color:#cbd5e1; }
     .panel { background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow:0 3px 12px rgba(2,6,23,.06);}
@@ -32,12 +32,11 @@
     input:focus, select:focus { border-color: var(--brand-2); box-shadow: 0 0 0 4px var(--ring);}
     button { border:0; background:var(--brand-2); color:white; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer; }
     button.ghost { background:transparent; color:var(--brand-2); border:1px solid var(--brand-2);}
-    main { padding:28px 0 72px; }
-    /* GRID — one card per row for better spacing on desktop too */
-    .grid { display:grid; grid-template-columns: 1fr; gap:28px; }
-    /* LISTING CARD — airy layout */
-    .listing { display:flex; flex-direction:column; gap:14px; padding:18px; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--card); box-shadow:0 4px 14px rgba(2,6,23,.08);}
-    .imgwrap { position:relative; overflow:hidden; border-radius:12px; background:#111827; min-height:260px; }
+    main { padding:30px 0 80px; }
+    .grid { display:grid; grid-template-columns: 1fr; gap:30px; }
+    .listing { display:flex; flex-direction:column; gap:16px; padding:20px; border:1px solid var(--border); border-radius:16px; background:var(--card); box-shadow:0 4px 14px rgba(2,6,23,.08); opacity:0; transform: translateY(8px); transition: .4s ease; }
+    .listing.show { opacity:1; transform:none; }
+    .imgwrap { position:relative; overflow:hidden; border-radius:12px; background:#111827; min-height:270px; }
     .imgwrap img { width:100%; height:100%; object-fit:cover; display:block; }
     .badge { position:absolute; left:14px; top:14px; background:rgba(15,23,42,.92); color:white; padding:5px 12px; border-radius:999px; font-size:13px; letter-spacing:.3px; }
     .specs { color:var(--muted); font-weight:600; display:flex; flex-wrap:wrap; gap:12px; }
@@ -45,18 +44,25 @@
     .price { font-weight:800; font-size:20px; margin-bottom:8px; }
     .desc { color:#334155; margin:8px 0 12px; }
     .actions { display:flex; gap:10px; flex-wrap:wrap; }
-    .sidebar { position:sticky; top:152px; align-self:start; }
+    /* Sidebar spacing: push closer to page edge and prevent overlap */
+    .sidebar { position:sticky; top:120px; align-self:start; z-index:0; margin-left:auto; max-width:360px; }
     .kicker { color:var(--ok); font-weight:700; font-size:12px; letter-spacing:.4px; }
     .section { margin-top:36px; }
     .testi { border-left:3px solid var(--brand-2); padding-left:12px; background:#f1f5f9; border-radius:8px; padding:12px; }
     footer { padding:32px 0 52px; color:var(--muted); border-top:1px solid var(--border); }
     .footercols { display:grid; grid-template-columns: 2fr 1fr 1fr; gap:18px; }
-    @media (max-width:900px) { .footercols { grid-template-columns:1fr; } }
-    .small { font-size:12px; color:var(--muted); }
+    @media (max-width:980px) { .row { gap:18px; } .sidebar { position:static; max-width:none; } }
+    .small { font-size:12px; color:#64748b; }
     .pill { display:inline-block; font-size:12px; background:#e2e8f0; color:#0f172a; padding:6px 10px; border-radius:999px; margin-right:6px; margin-bottom:6px; }
     .hidden { display:none !important; }
-    .gallery { display:flex; gap:10px; margin-top:8px; overflow:auto; padding-bottom:4px; }
-    .gallery img { height:74px; width:auto; border-radius:8px; border:1px solid var(--border); }
+    /* Gallery with arrows */
+    .gallery-wrap { display:flex; align-items:center; gap:10px; margin-top:8px; }
+    .gal-btn { border:1px solid var(--border); background:#fff; padding:8px 10px; border-radius:10px; cursor:pointer; user-select:none; line-height:1; }
+    .gal-btn:active { transform: scale(.98); }
+    .gallery { display:flex; gap:10px; overflow:auto; scroll-behavior:smooth; padding-bottom:4px; }
+    .gallery img { height:80px; width:auto; border-radius:8px; border:1px solid var(--border); flex:0 0 auto; }
+    /* Fun hover */
+    .listing:hover { box-shadow:0 10px 30px rgba(2,6,23,.12); }
   </style>
 </head>
 <body>
@@ -124,7 +130,7 @@
       <div id="noResults" class="panel hidden" role="status">No homes match your filters. Try broadening your search.</div>
 
       <div class="section" id="apply">
-        <div class="panel">
+        <div class="panel reveal">
           <h3>How to Apply</h3>
           <ol>
             <li>Review the property details and availability.</li>
@@ -137,7 +143,7 @@
       </div>
 
       <div class="section">
-        <div class="panel">
+        <div class="panel reveal">
           <h3>What Residents Say</h3>
           <blockquote class="testi">“Quick responses and smooth move-in. Quiet neighborhood and spotless home.”
             <div class="small">— Resident</div>
@@ -147,7 +153,7 @@
     </div>
 
     <aside class="sidebar" id="contact" style="flex:.9; min-width:320px;">
-      <div class="panel">
+      <div class="panel reveal">
         <h3>Contact</h3>
         <p><strong>Phone:</strong> <a href="tel:+13862129255" id="phone">(386) 212-9255</a><br/>
            <strong>Email:</strong> <a href="mailto:santhoshjanci92@gmail.com" id="email">santhoshjanci92@gmail.com</a></p>
@@ -158,7 +164,7 @@
           <a class="button" href="#apply"><button style="width:100%;">Apply Now</button></a>
         </div>
       </div>
-      <div class="panel section">
+      <div class="panel section reveal">
         <h4>Helpful Links</h4>
         <ul>
           <li><a href="https://www.facebook.com/share/177gVb3y2k/">Facebook</a></li>
@@ -168,7 +174,7 @@
   </main>
 
   <footer>
-    <div class="container footercols">
+    <div class="container footercols reveal">
       <div>
         <div class="brand" style="margin-bottom:8px;">
           <div class="brand-logo" aria-hidden="true"></div>
@@ -246,10 +252,10 @@
     "beds": 4,
     "baths": 2,
     "sqft": 2940,
-    "rent": null,
-    "deposit": null,
-    "available": "TBD",
-    "description": "Built 2019 on a 0.25 acre lot. Tile & carpet floors, central cooling, attached garage, HOA $25/mo. Not currently listed for rent — contact for availability.",
+    "rent": 2500,
+    "deposit": 2500,
+    "available": "September 1, 2026",
+    "description": "2019 build on 0.25 acres. Tile & carpet floors, central cooling + heat pump, concrete block, attached garage. Contact for tour and details.",
     "features": [
       "2019 build • Concrete block",
       "Attached garage",
@@ -272,9 +278,15 @@
     const ago = iso => { const d = new Date(iso); if (isNaN(d)) return ''; const days = Math.floor((Date.now()-d.getTime())/86400000); if (days<1) return 'Today'; if (days===1) return 'Yesterday'; return days + ' days ago'; };
     const escape = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 
-    function galleryHtml(arr) {
+    function galleryHtml(arr, id) {
       if (!arr || !arr.length) return '';
-      return '<div class="gallery">' + arr.map(src => `<img src="${escape(src)}" alt="Gallery image">`).join('') + '</div>';
+      const imgs = arr.map(src => `<img src="${escape(src)}" alt="Gallery image">`).join('');
+      return `
+        <div class="gallery-wrap">
+          <button class="gal-btn" onclick="galScroll('${id}', -1)" aria-label="Previous">‹</button>
+          <div class="gallery" id="gal-${id}">${imgs}</div>
+          <button class="gal-btn" onclick="galScroll('${id}', 1)" aria-label="Next">›</button>
+        </div>`;
     }
 
     function card(l) {
@@ -282,7 +294,7 @@
       const addr = [l.address, l.city, l.state, l.zip||''].filter(Boolean).join(', ');
       const pills = (l.features||[]).slice(0,4).map(f=>`<span class="pill">${escape(f)}</span>`).join('');
       return `
-      <article class="listing" data-id="${escape(l.id)}" data-beds="${escape(l.beds)}" data-baths="${escape(l.baths)}" data-rent="${escape(l.rent)}" data-neighborhood="${escape(l.neighborhood||'')}">
+      <article class="listing reveal" data-id="${escape(l.id)}" data-beds="${escape(l.beds)}" data-baths="${escape(l.baths)}" data-rent="${escape(l.rent)}" data-neighborhood="${escape(l.neighborhood||'')}">
         <div class="imgwrap">
           <img src="${escape(l.image||'')}" alt="Photo of ${escape(l.title)}"/>
           <div class="badge">${ago(l.datePosted)}</div>
@@ -291,10 +303,10 @@
           <div class="specs">${specs}</div>
           <h4 class="title">${escape(l.title)}</h4>
           <div class="price">${fmtMoney(l.rent) || 'Call for pricing'}</div>
-          <div class="desc">${escape(l.description||'')}</div>
+          <div class="desc">${escape(l.description||'')} </div>
           <div class="small" style="margin-bottom:8px;">${escape(addr)}</div>
           <div>${pills}</div>
-          ${galleryHtml(l.gallery)}
+          ${galleryHtml(l.gallery, l.id)}
           <div class="actions" style="margin-top:10px;">
             <a href="${escape(l.applyUrl||'#')}" target="_blank" rel="noopener"><button>Apply</button></a>
             <button class="ghost" onclick="toggleDetails('${escape(l.id)}')">Details</button>
@@ -312,10 +324,39 @@
       if (!listings.length) { $list.innerHTML = ""; $no.classList.remove('hidden'); return; }
       $no.classList.add('hidden');
       $list.innerHTML = listings.map(card).join('');
+      observeReveals();
+      enableDrag();
     }
 
     function toggleDetails(id) { const el = document.getElementById('details-'+id); if (el) el.classList.toggle('hidden'); }
     window.toggleDetails = toggleDetails;
+
+    // Gallery scroll buttons
+    function galScroll(id, dir) {
+      const el = document.getElementById('gal-'+id);
+      if (el) el.scrollBy({ left: 320*dir, behavior: 'smooth' });
+    }
+    window.galScroll = galScroll;
+
+    // Enable click-drag scrolling for galleries
+    function enableDrag() {
+      document.querySelectorAll('.gallery').forEach(gal => {
+        let isDown=false, startX=0, scrollLeft=0;
+        gal.addEventListener('mousedown', (e)=>{ isDown=true; startX=e.pageX - gal.offsetLeft; scrollLeft=gal.scrollLeft; gal.style.cursor='grabbing'; });
+        gal.addEventListener('mouseleave', ()=>{ isDown=false; gal.style.cursor='default'; });
+        gal.addEventListener('mouseup', ()=>{ isDown=false; gal.style.cursor='default'; });
+        gal.addEventListener('mousemove', (e)=>{ if(!isDown) return; e.preventDefault(); const x=e.pageX - gal.offsetLeft; const walk=(x - startX); gal.scrollLeft = scrollLeft - walk; });
+      });
+    }
+
+    // Reveal on scroll animation
+    function observeReveals() {
+      const els = document.querySelectorAll('.reveal, .listing');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(ent=>{ if(ent.isIntersecting) ent.target.classList.add('show'); });
+      }, { threshold: .1 });
+      els.forEach(el=>io.observe(el));
+    }
 
     // Filters
     const q = document.getElementById('q');
